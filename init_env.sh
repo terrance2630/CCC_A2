@@ -29,17 +29,6 @@ else
 fi
 
 echo -e "\n--------------------------------------------------------"
-echo -e "\033[35m> Installing frontend dependencies...\033[0m"
-echo "--------------------------------------------------------"
-
-# Install dependencies for the frontend
-cd frontend || print_error "Failed to change to frontend directory. Make sure it exists."
-pnpm install || print_error "Failed to install frontend dependencies. Please check the error message above."
-
-# Change to the root folder
-cd ..
-
-echo -e "\n--------------------------------------------------------"
 echo -e "\033[35m> Installing backend dependencies...\033[0m"
 echo "--------------------------------------------------------"
 
@@ -47,6 +36,23 @@ echo "--------------------------------------------------------"
 cd backend || print_error "Failed to change to backend directory. Make sure it exists."
 pnpm install || print_error "Failed to install backend dependencies. Please check the error message above."
 
+# Change to the root folder
+cd ..
+
+
+echo -e "\n--------------------------------------------------------"
+echo -e "\033[35m> Installing frontend dependencies...\033[0m"
+echo "--------------------------------------------------------"
+
+# Install dependencies for the frontend
+cd frontend || print_error "Failed to change to frontend directory. Make sure it exists."
+pnpm install || print_error "Failed to install frontend dependencies. Please check the error message above."
+
+
+
 echo -e "\n--------------------------------------------------------"
 echo -e "\033[32mEnvironment setup completed successfully!\033[0m"
 echo "--------------------------------------------------------"
+
+echo -e "Testing frontend web app ..."
+pnpm start
