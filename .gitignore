@@ -1,0 +1,6 @@
+# Ignore the data folder and its contents
+data_process/data/
+twitter-huge.json.zip
+
+# Ignore any .log files in the root directory
+*.log
