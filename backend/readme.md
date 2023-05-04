@@ -17,8 +17,7 @@ You may also see any lint errors in the console.
 
 :white_check_mark: *Use this one for your development* :white_check_mark:
 
-This will evoke the underlaying command `nodemon server.js` to start the backend server for localhost. `ndoemon` is installed as a development dependency and will restart the server once changes are made to the backend code. Runs the frontend in development mode.\
-  
+This will evoke the underlaying command `nodemon server.js` to start the backend server for localhost. `ndoemon` is installed as a development dependency and will restart the server once changes are made to the backend code. Runs the frontend in development mode.
 
 
 ### `pnpm test`
