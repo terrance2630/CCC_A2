@@ -137,7 +137,7 @@ dist
 
 
 # For macOS users
-.DS_Store
+**/.DS_Store
 
 # For vscode users
 **/.vscode/
