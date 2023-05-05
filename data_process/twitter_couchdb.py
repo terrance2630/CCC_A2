@@ -3,7 +3,7 @@ import couchdb
 
 admin = "group20"
 password = "group202023"
-url = f'http://{admin}:{password}@172.26.129.72:5984/'
+url = f'http://{admin}:{password}@172.26.128.48:5984/'
 couch = couchdb.Server(url)
 
 db_name = 'twitter-raw'
