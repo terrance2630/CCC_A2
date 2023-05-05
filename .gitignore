@@ -2,10 +2,9 @@
 data_process/data/
 twitter-huge.json.zip
 
+# Logs
 # Ignore any .log files in the root directory
 *.log
-
-# Logs
 logs
 npm-debug.log*
 yarn-debug.log*

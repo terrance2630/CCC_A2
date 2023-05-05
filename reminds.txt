@@ -1,0 +1,10 @@
+
+
+
+172.26.132.6  - mastodon harvester
+172.26.129.72 - data storage
+
+
+
+
+couchdb on mastodon: group20:group202023
