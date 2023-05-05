@@ -2,6 +2,8 @@
 
 ### Web Application Environment Setup  
 
+> :exclamation::computer: The following instructions only works on a Unix like operating system.
+
 After `git clone` the repository, `cd` to the project root folder.   
 
 Run the command 
