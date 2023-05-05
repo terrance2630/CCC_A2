@@ -4,3 +4,7 @@ twitter-huge.json.zip
 
 # Ignore any .log files in the root directory
 *.log
+
+
+# For macOS users
+**/.DS_Store
