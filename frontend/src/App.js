@@ -1,15 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Menu from './containers/menu'
+import Chart from './containers/chart'
+import Mapbox from './containers/mapbox'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          :) Hello World !
-        </p>
-      </header>
+      <Menu />
+      <Chart />
+      <Mapbox />
     </div>
   );
 }
