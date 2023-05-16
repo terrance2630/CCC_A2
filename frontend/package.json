@@ -27,6 +27,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
+    "react-wordcloud": "^1.2.7",
     "recharts": "^2.5.0",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
