@@ -8,6 +8,6 @@ const scenarioController = require('../controllers/scenarioController');
 // *************************************************************************************** //
 
 // Scenarios
-router.get('/', scenarioController.getPage);
+// router.get('/', scenarioController.getPage);
 
 module.exports = router;

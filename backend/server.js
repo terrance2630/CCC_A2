@@ -3,6 +3,7 @@
 // *************************************************************************************** //
 
 const dotenv = require('dotenv');
+dotenv.config({ path: './.env' });
 const http = require('http');
 const morgan = require('morgan');
 
@@ -18,12 +19,14 @@ const homeRouter = require('./routes/home');
 const scenarioRouter = require('./routes/scenario');
 const apiRouter = require('./routes/api');
 
+// Initialize couchdb connection
+const db = require('./models');
+
 
 // *************************************************************************************** //
 //                 Add Middleware & connected all routers to the server                    //
 // *************************************************************************************** //
 
-dotenv.config({ path: './.env' });
 
 const app = express();
 
