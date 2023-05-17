@@ -135,6 +135,32 @@ for doc in source_db.view('_all_docs', skip=begin_read_idx, limit=interval):
                     #skip current token
       
 
+vehicle_gather = comm.gather(dict_s2_tweets_vehicle, root=0)
+posi_gather = comm.gather(dict_s2_postive, root=0)
+nega_gather = comm.gather(dict_s2_negative, root=0)
+neu_gather = comm.gather(dict_s2_neutral, root=0)
+
+
+if rank == 0:
+
+    for each_dict in range(1, process_count):
+
+        # Task 2: gather gcc tweet
+        for sa4_code in dict_s2_tweets_vehicle:
+            dict_s2_tweets_vehicle[sa4_code] = dict_s2_tweets_vehicle[sa4_code] + vehicle_gather[each_dict][sa4_code]
+        for sa4_code in dict_s2_postive:
+            dict_s2_postive[sa4_code] = dict_s2_postive[sa4_code] + posi_gather[each_dict][sa4_code]
+        for sa4_code in dict_s2_negative:
+            dict_s2_negative[sa4_code] = dict_s2_negative[sa4_code] + nega_gather[each_dict][sa4_code]
+        for sa4_code in dict_s2_neutral:
+            dict_s2_neutral[sa4_code] = dict_s2_neutral[sa4_code] + neu_gather[each_dict][sa4_code]
+
+    print(dict_s2_tweets_vehicle)
+    print(dict_s2_postive)
+    print(dict_s2_negative)
+    print(dict_s2_neutral)
+
+
 # Scenario 2: Change the dicts to dataframe
 s2_number_tweets = []
 s2_postive = []
@@ -156,7 +182,7 @@ with open(f'{str(rank)}-senario2_data.csv', 'w') as out_f:
     df_s2.to_csv(out_f, index=False)
 
 
-print(df_s2)
+# print(df_s2)
 
 
 ######
