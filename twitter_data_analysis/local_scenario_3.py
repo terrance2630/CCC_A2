@@ -1,15 +1,21 @@
 #export SHAPE_RESTORE_SHX=YES
-import couchdb
+# 用来找Scenario 2的code 
 
+import couchdb
+from mpi4py import MPI
 import geopandas as gpd
 from shapely.geometry import Polygon, Point
-
+import nltk
 import pandas as pd
-
+from nltk.corpus import wordnet as wn
 import json
 import os
 
 
+# using MPI
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+process_count = comm.Get_size()
 
 
 # Read the SA4 shape file
@@ -40,19 +46,60 @@ def bbox_2_SA4(bbox, gdf_sa4):
     return None
         
 
+
+
+# # Specify the source view and database name
+# admin = 'group20'
+# password = 'group202023'
+# couch = couchdb.Server(f'http://{admin}:{password}@172.26.128.48:5984/')
+# source_db_name = 'twitter-geo'
+# source_db = couch[source_db_name]
+
+
+# # MPI: split the task to different cores # The interval of database for this core
+# size_db = len(source_db)
+# interval = size_db // process_count
+# begin_read_idx = rank * interval
+# end_read_idx = (rank + 1) * interval
+
 # Create the list of sa4 code
 sa4_codes = list(gdf_sa4['SA4_CODE21'])
 
+S2_TWEET_VEHICLE = 0
+S2_POSITIVE = 1
+S2_NEGATIVE = 2
+S2_NEUTRAL = 3
 
-loc_senti_dict = {code: list([0, 0, 0, 0]) for code in sa4_codes}
+s2_dict = {code: list([0, 0, 0, 0]) for code in sa4_codes}
 
-TOTAL = 0
-POSITIVE = 1
-NEGATIVE = 2
-NEUTRAL = 3
+
+# # Setup the dicts for each column of the dataframe in Scenario 2
+# dict_s2_tweets_vehicle = dict.fromkeys(sa4_codes, 0)
+# dict_s2_postive = dict.fromkeys(sa4_codes, 0)
+# dict_s2_negative = dict.fromkeys(sa4_codes, 0)
+# dict_s2_neutral = dict.fromkeys(sa4_codes, 0)
+
+
+### data for s2
+sport = wn.synset('sport.n.01')
+lst_sport = list(set([w for s in sport.closure(lambda s:s.hyponyms()) for w in s.lemma_names()]))\
+            +['yoga', 'muscle', 'gym', 'fitness', 'exercise', 'workout', 'weight', 'lifting', 'bodybuilding', 'bodybuilder', 'body', 'weightlifting', 'weightlifter',\
+             'dance', 'kayak', 'kayaking', 'canoe', 'canoeing', 'surf', 'surfing', 'swim', 'swimming', 'swimmer', 'swimwear', 'swimsuit', 'swims', 'swimsuit',\
+              'dart', 'darts', 'golf', 'golfer', 'golfing', 'tennis', 'fencing', 'fencer', 'fence', 'paddleboarding', 'paddleboard', 'paddle', 'board', 'surfboard',\
+                'surfing', 'surf', 'skateboarding', 'skateboard', 'skate', 'skater', 'skating', 'skatepark', 'skateboarder', 'skateboarders', 'skateboards', 'skates',\
+                 'hulahooping', 'hulahoop', 'hulahooper', 'hulahoops', 'hulahoopers', 'hulahooping', 'hulahoop', 'hulahooper', 'hulahoops', 'hulahoopers', 'hulahooping'
+              ]
+
+
 counter = 0
 
+
 file = open("/data/twi_data/tweet_with_geo.json") 
+file_size = os.path.getsize("/data/twi_data/tweet_with_geo.json")
+size_per_rank = file_size // process_count
+start_inx = process_count * size_per_rank
+end_inx = (process_count+1) * size_per_rank
+
 
 for line in file:
 
@@ -60,61 +107,89 @@ for line in file:
         break
 
     if(counter%10 == 0):
-        with open(f"loc-senti-log.txt", 'w') as f:
+        with open(f"{str(rank)}-log.txt", 'w') as f:
             f.write(str(counter))
 
     if(counter%50000==0):
-        with open(f"loc-senti-{str(counter)}-temp", 'w') as output:
-            json.dump(loc_senti_dict,output)
+        with open(f"{str(counter)}-temp", 'w') as output:
+            json.dump(s2_dict,output)
 
 
     counter +=1
 
     document = json.loads(line)
 
+    # get the doc id
+    doc_id = document['id']
+    if doc_id.startswith('_'):
+        continue
+    
     # Extract the language of the tweet
     language = document['doc']['data']['lang'] #str
     # Extract the bbox of the tweet
-    
+    bbox = document['doc']['includes']['places'][0]['geo']['bbox'] #list
     # Convert the bbox to the belonging SA4 
-   
+    sa4_code = bbox_2_SA4(bbox, gdf_sa4)
 
-    if language == 'en':
-        bbox = document['doc']['includes']['places'][0]['geo']['bbox'] #list
-        sa4_code = bbox_2_SA4(bbox, gdf_sa4)
-
-        if sa4_code != None:
+    if language == 'en' and sa4_code != None:
         # Extract the sentiment of the tweet 
-            sentiment = document['doc']['data']['sentiment'] #float    
+        sentiment = document['doc']['data']['sentiment'] #float    
 
-            loc_senti_dict[sa4_code][TOTAL] += 1
-            if sentiment > 0 :
-                loc_senti_dict[sa4_code][POSITIVE]+=1
-            elif sentiment == 0:
-                loc_senti_dict[sa4_code][NEUTRAL] +=1
-            else:
-                loc_senti_dict[sa4_code][NEGATIVE] +=1
+        # Extract the tokens of the tweet 
+        tokens = document['value']['tokens'] #str
+        tokens = tokens.lower()
+        token_list = tokens.split("|")
+
+        found_flag = False
+        # Check for Scenario 2
+        for token in token_list:
+            # print(token)
+
+            if found_flag:
+                break
+
+            # for word in lst_sport:
+            if token in lst_sport:
+
+                # print(token) 
+                # print(doc_id)
+                    
+                found_flag = True
+
+                s2_dict[sa4_code][S2_TWEET_VEHICLE] += 1
+
+                if sentiment > 0 :
+                    
+                    s2_dict[sa4_code][S2_POSITIVE] += 1
+                elif sentiment == 0:
+                    s2_dict[sa4_code][S2_NEUTRAL] += 1
+                else:
+                    s2_dict[sa4_code][S2_NEGATIVE] += 1
                     #skip current token
     
-loc_senti_combined_list = []
+s2_combined_list = []
 
 for code in sa4_codes:
     data = {
         'sa4_code': code,
-        '# of tweets': loc_senti_dict[sa4_code][TOTAL],
-        '# of positive tweets': loc_senti_dict[sa4_code][POSITIVE],
-        '# of negative tweets': loc_senti_dict[sa4_code][NEGATIVE],
-        '# of neutral tweets': loc_senti_dict[sa4_code][NEUTRAL]
+        '# of tweets about traffic': s2_dict[code][S2_TWEET_VEHICLE],
+        '# of positive tweets': s2_dict[code][S2_POSITIVE],
+        '# of negative tweets': s2_dict[code][S2_NEGATIVE],
+        '# of neutral tweets': s2_dict[code][S2_NEUTRAL]
     }
-    loc_senti_combined_list.append(data)
+    s2_combined_list.append(data)
 
-df_combined = pd.DataFrame(loc_senti_combined_list)
+df_s2_combined = pd.DataFrame(s2_combined_list)
 
 # Save the DataFrame to a CSV file
-with open(f'location_with_sentiment_data.csv', 'w') as out_f:
-    df_combined.to_csv(out_f, index=False)
+with open(f'senario2_data.csv', 'w') as out_f:
+    df_s2_combined.to_csv(out_f, index=False)
 
 print('done')
+
+
+
+
 #gathered_s2_combined_list = comm.gather(s2_combined_list, root=0)
 
 # if rank == 0:
