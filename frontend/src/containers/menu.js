@@ -7,19 +7,19 @@ function Menu() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Summary</Navbar.Brand>
+        <Navbar.Brand href="/">Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#senario1">Scenario1</Nav.Link>
-            <Nav.Link href="#senario2">Scenario2</Nav.Link>
-            <Nav.Link href="#senario3">Scenario3</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Good</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Good</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Good</NavDropdown.Item>
+            <Nav.Link href="/scenario1">Scenario1</Nav.Link>
+            <Nav.Link href="/scenario2">Scenario2</Nav.Link>
+            <Nav.Link href="/scenario3">Scenario3</Nav.Link>
+            <NavDropdown title="Test" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/chart">TestChart</NavDropdown.Item>
+              <NavDropdown.Item href="/mapbox">Mapbox</NavDropdown.Item>
+              <NavDropdown.Item href="/wordcloud">WordCloud</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">GOOD</NavDropdown.Item>
+              <NavDropdown.Item href="/sentiment">SentimentChart</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
