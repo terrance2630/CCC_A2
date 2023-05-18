@@ -23,5 +23,5 @@ for index, row in extracted_data.iterrows():
     cleaned_dict[SA4_code] = [income, age]
     
 
-with open('./sudo_data/scenario_4/income.json', 'w') as file:
+with open('./sudo_data/scenario_4/income_age.json', 'w') as file:
     json.dump(cleaned_dict, file)

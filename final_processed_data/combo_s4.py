@@ -1,3 +1,5 @@
+# THIS CODE IS TO COMBINE SUDO AND TWITTER DATA FOR ANALYSIS
+
 import json
 
 # Open the SUDO file
