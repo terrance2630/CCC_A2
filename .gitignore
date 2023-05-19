@@ -5,6 +5,7 @@ data_process/data/*/*.txt
 data_process/data/*/*-temp
 data_process/data/*/*.csv
 data_process/keys/password.json
+data_process/data/SA4/*
 *.log
 *.DS_Store
 *.pem
