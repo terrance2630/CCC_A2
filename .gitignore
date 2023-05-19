@@ -5,7 +5,11 @@ data_process/data/*/*.txt
 data_process/data/*/*-temp
 data_process/data/*/*.csv
 data_process/keys/password.json
-data_process/data/SA4/*
+data_process/data/SA4/*.dbf
+data_process/data/SA4/*.prj
+data_process/data/SA4/*.shp
+data_process/data/SA4/*.shx
+data_process/data/SA4/*.xml
 *.log
 *.DS_Store
 *.pem
