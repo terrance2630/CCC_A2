@@ -1,7 +1,10 @@
-# Ignore the data folder and its contents
-data_process/data/
+data_process/data/*.json
 twitter-huge.json.zip
-
-
-# Ignore any .log files in the root directory
+data_process/data/*/*.json
+data_process/data/*/*.txt
+data_process/data/*/*-temp
+data_process/data/*/*.csv
+data_process/keys/password.json
 *.log
+*.DS_Store
+*.pem
