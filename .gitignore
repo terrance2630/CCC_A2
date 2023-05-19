@@ -2,6 +2,10 @@
 data_process/data/
 twitter-huge.json.zip
 
+# Ignor the data from the scenarios
+scenarios_data/data
+
+
 # Ignore any .log files in the root directory
 *.log
 *.DS_Store
