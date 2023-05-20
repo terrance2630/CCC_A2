@@ -7,6 +7,7 @@ import Chart from './pages/chart'
 import Mapbox from './pages/mapbox'
 import WordCloud from './pages/wordcloud'
 import SentimentChart from './pages/sentimentChart'
+import Mastodon from './pages/mastodon'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/mapbox" element={<Mapbox />} />
         <Route path="/wordcloud" element={<WordCloud />} />
         <Route path="/sentiment" element={<SentimentChart />} />
+        <Route path="/mastodon" element={<Mastodon />} />
       </Routes>
     </div>
   );
