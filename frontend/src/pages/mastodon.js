@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import ReactECharts from 'echarts-for-react'
 
+import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -222,6 +223,11 @@ function Mastodon() {
       </Row>
       <Row>
         <Col>
+        <Alert>this is text</Alert>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <ReactECharts
             option={foodSentimentChartOption}
             style={{ height: 300 }}
@@ -250,6 +256,11 @@ function Mastodon() {
               legendselectchanged: onChartLegendselectchanged,
             }}
           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+        <Alert>this is text</Alert>
         </Col>
       </Row>
     </Container>
