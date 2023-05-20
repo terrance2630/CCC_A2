@@ -13,7 +13,7 @@ function Mastodon() {
   // ********************************* Initialize CouchDB Data ***************************************** //
   // Use React Hooks and axios to read in data from CouchDB
   const [post, setPost] = React.useState(null)
-  React.useEffect(() => {
+  const fetchData = () => {
     axios
       .get(baseURL + docID, {
         auth: {
@@ -22,40 +22,67 @@ function Mastodon() {
         },
       })
       .then((response) => {
-        setPost(response.data)
+        const data = response.data
+        setPost(data)
+        // set data for topic sentiment distribution chart
+        // updateChartInstance(foodSentimentChartRef, 'Food', data)
+        // updateChartInstance(sportSentimentChartRef, 'Sport', data)
+        // updateChartInstance(vehicleSentimentChartRef, 'Vehicle', data)
+        // set data for total tweets amount distribution chart
+        updateChartInstance(totalTweetChartRef, 'Total', data)
       })
+      .catch((error) => console.log(error))
+  }
+
+  // Use reference to get the echarts instance & enable dynamic update
+//   const foodSentimentChartRef = React.useRef(null)
+//   const sportSentimentChartRef = React.useRef(null)
+//   const vehicleSentimentChartRef = React.useRef(null)
+  const totalTweetChartRef = React.useRef(null)
+
+  const sum = (x) => {
+    x.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  }
+  const updateChartInstance = (chartRef, type, data) => {
+    // const chart = chartRef.current.getEchartsInstance()
+    const chart = this.totalTweetChartRef.getEchartsInstance()
+    const sentimentLegendLabel = [
+      data['Explain'][0],
+      data['Explain'][1],
+      data['Explain'][2],
+    ]
+    if (type !== 'Total') {
+      chart.setOption({
+        series: {
+          data: sentimentLegendLabel.map((label, index) => ({
+            name: label,
+            value: data[type][index],
+          })),
+        },
+      })
+    } else {
+      chart.setOption({
+        series: {
+          data: [
+            { value: sum(data['Food']), name: 'Food' },
+            { value: sum(data['Sport']), name: 'Sport' },
+            { value: sum(data['Vehicle']), name: 'Vehicle' },
+          ],
+        },
+      })
+    }
+  }
+
+  // Cosntantly fetch data every 2 seconds & update chart instance
+  React.useEffect(() => {
+    fetchData()
+    const intervalId = setInterval(fetchData, 2000)
+    return () => clearInterval(intervalId)
   }, [])
+
   // Verify that the data has been read in
   if (!post) return <div>Failed to load CouchDB</div>
   console.log(post)
-  const legendLabel = [
-    post['Explain'][0],
-    post['Explain'][1],
-    post['Explain'][2],
-  ]
-
-  // datas for topic sentiment distribution chart
-  const foodSeriesData = legendLabel.map((label, index) => ({
-    name: label,
-    value: post['Food'][index],
-  }))
-  const sportSeriesData = legendLabel.map((label, index) => ({
-    name: label,
-    value: post['Sport'][index],
-  }))
-  const vehicleSeriesData = legendLabel.map((label, index) => ({
-    name: label,
-    value: post['Vehicle'][index],
-  }))
-
-  // datas for total tweets amount distribution chart
-  const sum = (x) =>
-    x.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-  const tweetAmountData = [
-    { value: sum(post['Food']), name: 'Food' },
-    { value: sum(post['Sport']), name: 'Sport' },
-    { value: sum(post['Vehicle']), name: 'Vehicle' },
-  ]
 
   // ********************************** Define Food Chart ******************************************* //
   // Create the chart options
@@ -81,7 +108,7 @@ function Mastodon() {
         type: 'pie',
         radius: '55%',
         center: ['50%', '60%'],
-        data: foodSeriesData,
+        // data: foodSeriesData,
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
@@ -116,7 +143,7 @@ function Mastodon() {
         type: 'pie',
         radius: '55%',
         center: ['50%', '60%'],
-        data: sportSeriesData,
+        // data: sportSeriesData,
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
@@ -151,7 +178,7 @@ function Mastodon() {
         type: 'pie',
         radius: '55%',
         center: ['50%', '60%'],
-        data: vehicleSeriesData,
+        // data: vehicleSeriesData,
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
@@ -186,7 +213,7 @@ function Mastodon() {
         type: 'pie',
         radius: '55%',
         center: ['50%', '60%'],
-        data: tweetAmountData,
+        // data: tweetAmountData,
         itemStyle: {
           emphasis: {
             shadowBlur: 10,
@@ -211,6 +238,7 @@ function Mastodon() {
       <Row>
         <Col>
           <ReactECharts
+            ref={(e) => this.totalTweetChartRef = e}
             option={totalTweetChartOption}
             style={{ height: 300 }}
             onChartReady={onChartReady}
@@ -220,9 +248,10 @@ function Mastodon() {
           />
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Col>
           <ReactECharts
+            ref={foodSentimentChartRef}
             option={foodSentimentChartOption}
             style={{ height: 300 }}
             onChartReady={onChartReady}
@@ -233,6 +262,7 @@ function Mastodon() {
         </Col>
         <Col>
           <ReactECharts
+            ref={sportSentimentChartRef}
             option={sportSentimentChartOption}
             style={{ height: 300 }}
             onChartReady={onChartReady}
@@ -243,6 +273,7 @@ function Mastodon() {
         </Col>
         <Col>
           <ReactECharts
+            ref={vehicleSentimentChartRef}
             option={vehicleSentimentChartOption}
             style={{ height: 300 }}
             onChartReady={onChartReady}
@@ -251,7 +282,7 @@ function Mastodon() {
             }}
           />
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   )
 }
