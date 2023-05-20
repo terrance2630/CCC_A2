@@ -13,3 +13,4 @@ data_process/data/SA4/*.xml
 *.log
 *.DS_Store
 *.pem
+data_process/mastodon_harvester/userpass.json
