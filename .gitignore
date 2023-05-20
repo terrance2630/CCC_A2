@@ -7,3 +7,5 @@ twitter_data_token_by_topic/*.json
 # Ignore any .log files in the root directory
 *.log
 *.DS_Store
+
+scenarios_data/data/*.json
