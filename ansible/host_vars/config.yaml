@@ -2,6 +2,7 @@
 ansible_user: ubuntu
 remote_working_directory: /home/ubuntu/project
 git_repo: /home/ubuntu/project/CCC_A2
+harvester_dir: /home/ubuntu/project/CCC_A2/data_process/mastodon_harvester
 ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
 ansible_ssh_key: "config/group_20.pem"
 

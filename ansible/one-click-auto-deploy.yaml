@@ -37,4 +37,4 @@
     - host_vars/config.yaml
   gather_facts: true
   roles:
-    - role: initial-webapp
+    - role: run-webapp

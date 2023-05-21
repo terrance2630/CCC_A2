@@ -1,17 +1,21 @@
-- name: install python with Mastodon and CouchDB
-  hosts: localhost
-  become: yes
-  tasks:
-    
-    - name: install Mastodon and CouchDB
-      pip:
-        name:
-          - Mastodon.py
-          - couchdb
-        state: latest
-    
-    - name: run Python application for social server
-      shell: "nohup python3 harvester.py -s social > /dev/null 2>&1 &"
-    
-    - name: run Python application for au_social server
-      shell: "nohup python3 harvester.py -s au_social > /dev/null 2>&1 &"
+---
+
+- name: install Mastodon and CouchDB
+  become: true
+  pip:
+    name:
+      - Mastodon.py
+      - couchdb
+    state: latest
+
+- name: run Python application for social server
+  become: true
+  shell: "nohup python3 harvester.py -s social > /dev/null 2>&1 &"
+  args:
+    chdir: '{{ harvester_dir }}'
+
+- name: run Python application for au_social server
+  become: true
+  shell: "nohup python3 harvester.py -s au_social > /dev/null 2>&1 &"
+  args:
+    chdir: '{{ harvester_dir }}'
