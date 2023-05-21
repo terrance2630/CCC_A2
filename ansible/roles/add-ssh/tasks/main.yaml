@@ -1,0 +1,6 @@
+---
+- name: add private ssh key
+  copy:
+    src: '{{ ansible_ssh_key }}'
+    dest: /home/ubuntu/.ssh/group_20.pem
+    mode: 0600

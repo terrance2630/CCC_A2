@@ -1,0 +1,10 @@
+---
+
+- name: Run docker-compose
+  become: true
+
+  tasks:
+    - name: Start docker-compose
+      command: docker-compose up --build -d
+      args:
+        chdir: '{{ git_repo }}'

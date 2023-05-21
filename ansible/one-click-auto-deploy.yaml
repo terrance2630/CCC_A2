@@ -1,0 +1,40 @@
+
+
+# Environment initializaiton on all instances
+- hosts: all-instances
+  vars_files: 
+    - host_vars/config.yaml
+  gather_facts: true
+
+  roles:
+    # - role: add-ssh
+    - role: install-dependency
+    - role: clone-repo
+    # - role: ...
+
+
+# Mastodon Harvester Setup
+- hosts: mastodon-harvester
+  var_files:
+    - host_vars/config.yaml
+  gather_facts: true
+  roles:
+    - role: run-mastodon-harvester
+
+
+# Scale up mastodon client when demand
+- hosts: temp-harvester
+  var_files:
+    - host_vars/config.yaml
+  gather_facts: true
+  roles:
+    - role: scale-up-mastodon-client
+
+
+# Web application setup
+- hosts: webapp
+  var_files:
+    - host_vars/config.yaml
+  gather_facts: true
+  roles:
+    - role: initial-webapp

@@ -1,0 +1,16 @@
+---
+- name: Delete remote working directory if exists
+  file:
+    state: absent
+    path: '{{ remote_working_directory }}'
+
+- name: Creates remote working directory
+  file:
+    path: '{{ remote_working_directory }}'
+    state: directory
+    mode: 0755
+
+- name: git clone repo
+  shell: git clone https://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@github.com/terrance2630/CCC_A2.git
+  args:
+    chdir: '{{ remote_working_directory }}'
