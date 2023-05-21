@@ -1,5 +1,3 @@
-
-
 # Environment initializaiton on all instances
 - hosts: all-instances
   vars_files: 

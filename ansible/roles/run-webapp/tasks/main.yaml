@@ -1,5 +1,5 @@
 ---
-- name: Start docker-compose
+- name: start docker-compose to run frontend & backend
   command: docker-compose up --build -d
   args:
     chdir: '{{ git_repo }}'
