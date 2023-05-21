@@ -5,7 +5,7 @@ import json
 # method to extract target information from sudo
 df = pd.read_csv('/Users/euniceyao/Documents/GitHub/CCC_A2/sudo_data/scenario_2/abs_2021census_g34_aust_sa4-3852039406454342963.csv')
 
-# print(df.columns)
+print(df.columns)
 
 
 
@@ -16,10 +16,11 @@ vehicle_1 = ' num_mvs_per_dweling_1_mvs'
 vehicle_2 = ' num_mvs_per_dweling_2_mvs'
 vehicle_3 = ' num_mvs_per_dweling_3_mvs'
 vehicle_4_more = ' num_mvs_per_dweling_4mo_mvs'
+total_dwelling = ' total_dwelings'
 
-columns_to_extract = [SA4_code, vehicle_0, vehicle_1, vehicle_2, vehicle_3, vehicle_4_more]
+columns_to_extract = [SA4_code, vehicle_0, vehicle_1, vehicle_2, vehicle_3, vehicle_4_more, total_dwelling]
 extracted_data = df.loc[:, columns_to_extract]
-# print(extracted_data)
+print(extracted_data)
 
 
 
@@ -29,7 +30,7 @@ extracted_data = df.loc[:, columns_to_extract]
 
 def compute_avg_vehicle_per_dwelling(row):
     numerator = row[vehicle_1] + 2 * row[vehicle_2] + 3 * row[vehicle_3] + 4 * row[vehicle_4_more]
-    denominator = row[vehicle_0] + row[vehicle_1] + row[vehicle_2] + row[vehicle_3] + row[vehicle_4_more]
+    denominator = row[total_dwelling]
     return numerator / denominator
 
 

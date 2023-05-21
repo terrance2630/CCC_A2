@@ -7,6 +7,10 @@ import pandas as pd
 with open('/Users/euniceyao/Documents/GitHub/CCC_A2/sudo_data/scenario_2/avg_vehicle.json', 'r') as sudo_file:
     sudo_data = json.load(sudo_file)
 
+# Open SUDO population file
+with open('/Users/euniceyao/Documents/GitHub/CCC_A2/sudo_data/population_by_loc/total_pop.json') as f:
+    population = json.load(f)
+
 # Open the Twitter file
 twitter_data = pd.read_csv('/Users/euniceyao/Documents/GitHub/CCC_A2/twitter_data_analysis/scenario_2_output.csv')
 
@@ -33,6 +37,13 @@ for index, row in twitter_data.iterrows():
 
     avg_vehicle = sudo_data[str(SA4_code)]
 
+    try:
+        total_population = float(population[str(SA4_code)])
+        avg_tweet_pp = total_tweet / total_population
+    except:
+        avg_tweet_pp = None
+
+
     data_list_for_each_location.append(int(total_tweet))
     data_list_for_each_location.append(int(posi_tweet))
     data_list_for_each_location.append(int(nega_tweet))
@@ -41,6 +52,7 @@ for index, row in twitter_data.iterrows():
     data_list_for_each_location.append(float(negative_percentage))
     data_list_for_each_location.append(float(neutral_percentage))
     data_list_for_each_location.append(float(avg_vehicle))
+    data_list_for_each_location.append(avg_tweet_pp)
 
     combo_dict[int(SA4_code)] = data_list_for_each_location
 
@@ -49,7 +61,21 @@ for index, row in twitter_data.iterrows():
 
 
 
+# # Open a file in write mode
+# with open("/Users/euniceyao/Documents/GitHub/CCC_A2/final_processed_data/s2_data.json", "w") as file:
+#     # Write the dictionary to the file as JSON
+#     json.dump(combo_dict, file)
+
+avg_t_pp_v = {}
+
+for i in combo_dict:
+    list_value = combo_dict[i]
+    avg_pp = list_value[8]
+    avg_t_pp_v[i] = avg_pp
+    
+print(avg_t_pp_v)
+
 # Open a file in write mode
-with open("/Users/euniceyao/Documents/GitHub/CCC_A2/final_processed_data/s2_data.json", "w") as file:
+with open("/Users/euniceyao/Documents/GitHub/CCC_A2/final_processed_data/sa_avg_tweet_pp_vehicle.json", "w") as file:
     # Write the dictionary to the file as JSON
-    json.dump(combo_dict, file)
+    json.dump(avg_t_pp_v, file)
