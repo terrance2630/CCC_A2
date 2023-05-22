@@ -2,7 +2,7 @@
 
 
 172.26.132.6  - mastodon harvester
-172.26.129.72 - data storage
+172.26.128.48 - data storage
 
 
 

@@ -29,12 +29,13 @@ style: |
 # Introduction
 
 - Topic: Sentiment Analysis Across Life
-- we aim to ...
-  - Main goal: Discover Patterns of Sentiment
-  - 
-- the data ...
-  - data source
-  - mastodon, twitter ...
+- We aim to ...
+  - Main goal: Discover Patterns of Sentiment from the tweets v.s. Different Topics of Living
+  - Topics: Food, Traffic & Sport
+  
+- Data for analysis
+  - From ADO : Twitter Data with large number of Tweets
+  - From SUDO : SA4-level statistical data (e.g. Income and Po)
 - web application for demonstration
 
 

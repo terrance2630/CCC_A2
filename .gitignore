@@ -1,8 +1,17 @@
-# Ignore the data folder and its contents
-data_process/data/
+data_process/data/*.json
 twitter-huge.json.zip
+data_process/data/*/*.json
+data_process/data/*/*.txt
+data_process/data/*/*-temp
+data_process/data/*/*.csv
+data_process/keys/password.json
+data_process/data/SA4/*.dbf
+data_process/data/SA4/*.prj
+data_process/data/SA4/*.shp
+data_process/data/SA4/*.shx
+data_process/data/SA4/*.xml
+data_process/mastodon_harvester/userpass.json
 
-# Logs
 # Ignore any .log files in the root directory
 *.log
 logs

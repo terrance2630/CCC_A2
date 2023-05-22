@@ -2,6 +2,7 @@ import json
 import couchdb
 from mastodon import Mastodon, StreamListener
 import argparse
+import analysis
 
 with open('./userpass.json') as f:
     userpass = json.load(f)
@@ -23,7 +24,7 @@ else:
 # authentication
 admin = userpass['userpass']['admin']
 password = userpass['userpass']['password']
-url = f'http://{admin}:{password}@127.0.0.1:5984/'
+url = f'http://{admin}:{password}@172.26.132.6:5984/'
 
 # get couchdb instance
 couch = couchdb.Server(url)
@@ -56,6 +57,12 @@ class Listener(StreamListener):
         json_str = json.dumps(status, indent=2, sort_keys=True, default=str)
         doc_id, doc_rev = db.save(json.loads(json_str))
         print(f'Document saved with ID: {doc_id} and revision: {doc_rev}')
+
+        document = db.get(doc_id)
+
+        analysis.analyse(document)
+
+        
 
 
 # make it better with try-catch and error-handling
