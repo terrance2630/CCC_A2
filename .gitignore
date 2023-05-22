@@ -144,3 +144,5 @@ dist
 # For temporary files
 **/*.tmp
 **/.tmp/
+
+*.pem
