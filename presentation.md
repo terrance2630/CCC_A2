@@ -40,18 +40,27 @@ style: |
 
 
 --- 
+<!--_class: lead-->
 # Architecture
 
-- text go here
 
-- image go here
+
+
 
 
 
 
 ---
-# CouchDB
+<!--_class: lead-->
+**System Design**
+![width:1000px](resource/arch.png)
 
+
+
+---
+<!--_class: lead-->
+**CouchDB**
+![width:1000px](resource/couch.png)
 
 
 
@@ -66,12 +75,13 @@ style: |
 ---
 # Harvester & Auto-scaling
 
+We employed `Ansible` to deploy the harvester and auto-scaling system. By just one shell script, we auto scale up the harvester into new node of MRC.
 
-
-
-
-
-
+```shell
+sudo ./auto-scale-up.sh
+```
+Hello !!!
+你的图片上去了
 
 
 
