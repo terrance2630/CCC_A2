@@ -11,91 +11,112 @@ style: |
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
     }
+    .lead {
+      text-align: center;
+    }
 
 ---
 
-# CCC Demo :rocket:
+# COMP90024 
+# Cluster and Cloud Computing 
+**Web Application and Scenarios Demo** :rocket:  
+
 <span style="color: grey">By - </span>Team 42
 
----
-
-<!-- Start first slide here -->
 
 
----
+--- 
+# Introduction
 
-[Markdown Language Reference Link](https://www.markdownguide.org/basic-syntax/)
-* [basics](https://www.markdownguide.org/basic-syntax/)
-* [extended](https://www.markdownguide.org/extended-syntax/)
-* [hacks](https://www.markdownguide.org/hacks)
-
-
-
----
-
-
----
-
- 
----
+- our topic
+- we aim to ...
+- the data ...
+  - data source
+  - mastodon, twitter ...
+- web application for demonstration
 
 
----
+--- 
+# Architecture
+
+- text go here
+
+--- 
+# Web Application
+
+Make sure you are connecting the school network or UniMelb VPN.
 
 
----
-### Formatting
-
-![bg left height:4in](https://i.insider.com/5e4c641b69692c00533ecf1b?width=1300&format=jpeg&auto=webp)
-
-* here is an exmaple for 2 columns with img
-* use `![bg left <size>](link)`
-* (p.s. for a full list of emoji. see [link1](https://dev.to/nikolab/complete-list-of-github-markdown-emoji-markup-5aia) or [link2](https://gist.github.com/rxaviers/7360908))
+**Live Demo**:
+Visit [172.26.128.31](http://172.26.128.31:3000/) for live demo of the web application.
 
 
 ---
-#### Two columns of text
+<!--_class: lead-->
+# Scenario 1 - Food
 
-<div class="columns">
-<div>
+--- 
+### Findings
+![bg left width:6in](frontend/src/logo.svg)
 
-<!-- First Column from here -->
-* test
-* ``` sh
-    sudo ./one-click-auto-deploy.sh
-    ```
+- From inspection, about 4.43% of tweets mentioned food, and 45.82% of them showed a positive sentiment.
+- Higher proportion of positive sentiment towards food compared to the overall positive sentiment.
 
-</div>
-<div>
 
-<!-- SecondColumn from here -->
-* ansible
+--- 
+### Food Topic Modeling
 
-</div>
-</div>
+- image go here
+- Among all these tweets about food, we try to find what people usually discuss by LDA topic modeling, we group what people discuss into 5 topics, and extract the key words for each topic.
 
 
 ---
-<!--_color: lightblue-->
-<!--_backgroundColor: black-->
+<!--_class: lead-->
 
-- use `<!-- -->` to change the font style just on this page
-  
-- for example:
-  - `<!--_color: lightblue-->`
-  - `<!--_backgroundColor: black-->`
-  
-\
-or use
-`#<!--fit-->`Huge
-for :point_down:
+**So, What might affect people’s attitude towards food?**
 
 ---
 
-#### <span style="color: red">Last Note: </span> 
+#### Locations
+- Our analysis is based on location, that is the Statistical Area Level 4 (SA4), the map here divides Australia into 86 polygons, and each represents a SA4 area.
+- However, 
 
-- presenting fragmented list:
-  - use `* + space` to show the bullet point one by one
-  - use `- + space` to show the bullet point at once
+![bg right width:6in](frontend/src/logo.svg)
+
+--- 
+
+#### Income
+
+- We try to see if people’s attitudes towards food is also related to their income
+- There is no significant correlation between the income and the number of tweets about food for each SA4 area.
+
+![bg right width:6in](frontend/src/logo.svg)
 
 
+---
+<!--_class: lead-->
+# Scenario 2 - Traffic
+--- 
+
+
+
+---
+# Scenario 3 - Sport
+
+
+
+
+---
+# Mastodon
+
+#### Server
+- text
+
+
+
+
+
+
+--- 
+<!--_class: lead-->
+## Thank you ! :heart:
