@@ -1,9 +1,11 @@
 import axios from 'axios'
 import React from 'react'
-import ReactWordcloud from "react-wordcloud"
+import ReactWordcloud from 'react-wordcloud'
+import Button from 'react-bootstrap/Button'
 
 function Wordcloud(props) {
   const [post, setPost] = React.useState(null)
+  const [cloudID, setCloudID] = React.useState(0)
   React.useEffect(() => {
     axios.get(props.url, {
       auth: {
@@ -18,13 +20,24 @@ function Wordcloud(props) {
   if (!post) return <div>Failed to load CouchDB</div>
   console.log(post)
 
-  const wordData = post[0].map((label, index) => ({
-    text: label,
-    value: 20 - index
-  }))
+  function updateCloudID() {
+    setCloudID(cloudID == 4 ? 0: cloudID + 1);
+  }
+
+  function getWordData() {
+    return post[cloudID].map((label, index) => ({
+      text: label,
+      value: 20 - index
+    }))
+  }
 
   return (
-    <ReactWordcloud words={wordData} />
+    <div>
+      <Button variant="primary" size="lg" onClick={updateCloudID}>
+        Current Topic: {cloudID + 1}
+      </Button>
+      <ReactWordcloud words={getWordData()} />
+    </div>
   );
 }
 
