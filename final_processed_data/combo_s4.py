@@ -35,11 +35,24 @@ for SA4_code in twitter_data:
     sentiment_data_list.append(suda_data_list[0])
     sentiment_data_list.append(suda_data_list[1])
 
-print(twitter_data)
+# print(twitter_data)
+
+# # Open a file in write mode
+# with open("/Users/euniceyao/Documents/GitHub/CCC_A2/final_processed_data/s4_data.json", "w") as file:
+#     # Write the dictionary to the file as JSON
+#     json.dump(twitter_data, file)
+
+# # SUDO data structure -- SA4_code: [weekly_income, age]
+
+weekly_median_income = {}
+for i in sudo_data:
+    value_list = sudo_data[i]
+    income = value_list[0]
+    weekly_median_income[i] = income
+
+print(weekly_median_income)
 
 # Open a file in write mode
-with open("/Users/euniceyao/Documents/GitHub/CCC_A2/final_processed_data/s4_data.json", "w") as file:
+with open("/Users/euniceyao/Documents/GitHub/CCC_A2/final_processed_data/weekly_median_income_by_loc.json", "w") as file:
     # Write the dictionary to the file as JSON
-    json.dump(twitter_data, file)
-
-# SUDO data structure -- SA4_code: [weekly_income, age]
+    json.dump(weekly_median_income, file)
