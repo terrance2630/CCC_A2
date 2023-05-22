@@ -28,9 +28,10 @@ style: |
 --- 
 # Introduction
 
-- our topic
+- Topic: Sentiment Analysis Across Life
 - we aim to ...
-  - main goal: sentiment analysis
+  - Main goal: Discover Patterns of Sentiment
+  - 
 - the data ...
   - data source
   - mastodon, twitter ...
@@ -52,15 +53,7 @@ style: |
 
 ---
 <!--_class: lead-->
-**System Design**
-![width:1000px](resource/arch.png)
-
-
-
----
-<!--_class: lead-->
-**CouchDB**
-![width:1000px](resource/couch.png)
+![width:1100px](resource/arch.png)
 
 
 
@@ -80,10 +73,6 @@ We employed `Ansible` to deploy the harvester and auto-scaling system. By just o
 ```shell
 sudo ./auto-scale-up.sh
 ```
-Hello !!!
-你的图片上去了
-
-
 
 
 

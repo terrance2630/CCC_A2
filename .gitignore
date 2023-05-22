@@ -144,3 +144,7 @@ dist
 # For temporary files
 **/*.tmp
 **/.tmp/
+
+
+# exclude private keys
+**/*.pem
