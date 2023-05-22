@@ -63,7 +63,7 @@ app.all('*', (req, res) => {
 
 const server = http.createServer(app);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 app.set('port', port);
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);

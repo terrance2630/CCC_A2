@@ -18,5 +18,5 @@ nano.db.list().then((body) => {
 });
 
 module.exports = {
-    
+    couchdb: nano,
 };
