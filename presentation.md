@@ -30,10 +30,13 @@ style: |
 
 - our topic
 - we aim to ...
+  - main goal: sentiment analysis
 - the data ...
   - data source
   - mastodon, twitter ...
 - web application for demonstration
+
+
 
 
 --- 
@@ -41,33 +44,89 @@ style: |
 
 - text go here
 
---- 
-# Web Application
-
-Make sure you are connecting the school network or UniMelb VPN.
+- image go here
 
 
-**Live Demo**:
-Visit [172.26.128.31](http://172.26.128.31:3000/) for live demo of the web application.
 
 
 ---
+# CouchDB
+
+
+
+
+
+
+
+
+
+
+
+
+---
+# Harvester & Auto-scaling
+
+
+
+
+
+
+
+
+
+
+
+
+--- 
+# Web Application
+
+- Both the frontend and backend are already deployed on the cloud.
+- `Docker` and `docker-compose` are used for app initilizaiton and running.  
+
+
+**Live Demo**:
+Make sure you are connecting the school network or UniMelb VPN.
+Visit [172.26.128.31](http://172.26.128.31:3000/) for live demo of the web application.
+
+
+
+
+
+---
+
 <!--_class: lead-->
 # Scenario 1 - Food
 
+
+
+
+
+
+
 --- 
-### Findings
+### Sentiment
 ![bg left width:6in](frontend/src/logo.svg)
 
 - From inspection, about 4.43% of tweets mentioned food, and 45.82% of them showed a positive sentiment.
 - Higher proportion of positive sentiment towards food compared to the overall positive sentiment.
 
 
+
+
+
+
+
 --- 
 ### Food Topic Modeling
-
 - image go here
 - Among all these tweets about food, we try to find what people usually discuss by LDA topic modeling, we group what people discuss into 5 topics, and extract the key words for each topic.
+
+
+
+
+
+
+
 
 
 ---
@@ -75,42 +134,93 @@ Visit [172.26.128.31](http://172.26.128.31:3000/) for live demo of the web appli
 
 **So, What might affect people’s attitude towards food?**
 
----
 
+
+
+
+
+---
 #### Locations
-- Our analysis is based on location, that is the Statistical Area Level 4 (SA4), the map here divides Australia into 86 polygons, and each represents a SA4 area.
-- However, 
+- Statistical Area Level 4 (SA4) is used to divides the map into 86 polygons, each represents a SA4 area.
+- People in XXX are more likely to tweet about food
+- However, this may be explained by the number of restaurants in the large city.
+
 
 ![bg right width:6in](frontend/src/logo.svg)
 
 --- 
 
-#### Income
+#### Incomes
 
 - We try to see if people’s attitudes towards food is also related to their income
 - There is no significant correlation between the income and the number of tweets about food for each SA4 area.
 
 ![bg right width:6in](frontend/src/logo.svg)
 
+---
+
+![image go here]()
+
+- But people in XXX city have a greater positive attitude towards food, while people in XXX city have a more negative attitude towards food.
+
+
+
 
 ---
 <!--_class: lead-->
 # Scenario 2 - Traffic
+
+
+
+
+
+
+
+
 --- 
 
 
 
+
 ---
+<!--_class: lead-->
 # Scenario 3 - Sport
+
+
+
+
+
+
+
+
+---
+
+
+
+
+
 
 
 
 
 ---
 # Mastodon
+Because of the limit amount of data we can get from Mastodon, we only use it to compare with the findings from Twitter. 
 
-#### Server
-- text
+Topic classification and sentiment analysis are performed on the harvested data.
+
+*We use the data from mutiple Mastodon servers:*
+- au
+- au-social
+- XXX
+
+---
+
+
+
+
+
+
 
 
 
