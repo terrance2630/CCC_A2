@@ -7,6 +7,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+import SentimentPieChart from '../components/sentimentPieChart';
+
 const baseURL = 'http://172.26.128.48:5984/mastodon-data-analysis/'
 const docID = 'd405e024ad4d1169fb990c2c51fe3264'
 
@@ -223,7 +225,7 @@ function Mastodon() {
       </Row>
       <Row>
         <Col>
-        <Alert>this is text</Alert>
+        <Alert>Mastodon Data</Alert>
         </Col>
       </Row>
       <Row>
@@ -260,7 +262,33 @@ function Mastodon() {
       </Row>
       <Row>
         <Col>
-        <Alert>this is text</Alert>
+        <Alert>Twitter Data</Alert>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <SentimentPieChart
+            topicName={'Food'}
+            positiveCount={65508}
+            neutralCount={40965}
+            negativeCount={36492}
+          />
+        </Col>
+        <Col>
+          <SentimentPieChart
+            topicName={'Sports'}
+            positiveCount={37108}
+            neutralCount={20811}
+            negativeCount={20575}
+          />
+        </Col>
+        <Col>
+          <SentimentPieChart
+            topicName={'Vehicle'}
+            positiveCount={35260}
+            neutralCount={23833}
+            negativeCount={21392}
+          />
         </Col>
       </Row>
     </Container>

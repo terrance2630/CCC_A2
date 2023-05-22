@@ -16,7 +16,7 @@ function SentimentPieChart(props) {
       orient: 'vertical',
       left: 'left',
       top: '15%',
-      data: ['Positive', 'Neutral', 'Negative'],
+      data: ['Positive', 'Negative', 'Neutral'],
     },
     series: [
       {
@@ -26,8 +26,8 @@ function SentimentPieChart(props) {
         center: ['50%', '60%'],
         data: [
           { name: 'Positive', value: props.positiveCount },
+          { name: 'Negative', value: props.negativeCount },
           { name: 'Neutral', value: props.neutralCount },
-          { name: 'Negative', value: props.negativeCount }
         ],
         itemStyle: {
           emphasis: {

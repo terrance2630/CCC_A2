@@ -26,7 +26,7 @@ function TopicPieChart(props) {
         center: ['50%', '60%'],
         data: [
           { name: props.topicName, value: props.topicCount },
-          { name: 'Others', value: 3226683 - props.topicCount }
+          { name: 'Others', value: (props.totalCount ? props.totalCount : 2512076) - props.topicCount }
         ],
         itemStyle: {
           emphasis: {
