@@ -71,10 +71,8 @@ style: |
 # Harvester & Auto-scaling
 
 We employed `Ansible` to deploy the harvester and auto-scaling system. By just one shell script, we auto scale up the harvester into new node of MRC.
+![width:700px](resource/ppt-auto-scale-use.png)
 
-```shell
-sudo ./auto-scale-up.sh
-```
 
 
 
@@ -212,8 +210,7 @@ Topic classification and sentiment analysis are performed on the harvested data.
 
 *We use the data from mutiple Mastodon servers:*
 - au
-- au-social
-- XXX
+- au social
 
 ---
 
