@@ -15,5 +15,6 @@ elif [ "$1" == "--existing" ]; then
     ansible-playbook -i inventory/hosts.ini -u ubuntu --key-file=config/group_20.pem auto-scale-up.yaml
 else
     echo -e "${RED}ERROR: Invalid argument supplied!${NC}"
-    echo -e "\nUsage: ./auto-scale-up.sh --newip <IP address> or ./auto-scale-up.sh --existing"
+    echo -e "Usage: ./auto-scale-up.sh --newip <IP address>"
+    echo -e "Or: ./auto-scale-up.sh --existing\n"
 fi

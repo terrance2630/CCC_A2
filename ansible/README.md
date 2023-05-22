@@ -5,7 +5,8 @@
 > Run the following command to deploy the webapp, database and Mastodon harvester:
 
 ```bash
-sudo ./one-click-auto-deploy.sh
+chmod +x one-click-auto-deploy.sh
+./one-click-auto-deploy.sh
 ```
 
 ### Auto Scale up Mastodon Harvester
@@ -14,5 +15,8 @@ sudo ./one-click-auto-deploy.sh
 > Run the following command to auto scale up the Mastodon harvester to a new instance on MRC:  
 
 ```bash
-sudo ./auto-scale-up.sh
+chmod +x auto-scale-up.sh
+./auto-scale-up.sh
 ```
+See the below image for a usage example:
+![](../resource/auto-scale-use.png)
