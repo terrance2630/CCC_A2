@@ -35,8 +35,9 @@ style: |
   
 - Data for analysis
   - From ADO : Twitter Data with large number of Tweets
-  - From SUDO : SA4-level statistical data (e.g. Income and Po)
-- web application for demonstration
+  - From SUDO : SA4-level statistical data (e.g. Income and Population)
+  - From Mastodon: Toots from specific servers
+- Web application for demonstration
 
 
 
