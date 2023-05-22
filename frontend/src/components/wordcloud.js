@@ -21,7 +21,7 @@ function Wordcloud(props) {
   console.log(post)
 
   function updateCloudID() {
-    setCloudID(cloudID == 4 ? 0: cloudID + 1);
+    setCloudID(cloudID === 4 ? 0: cloudID + 1);
   }
 
   function getWordData() {
