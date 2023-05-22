@@ -20,15 +20,6 @@
     - role: run-mastodon-harvester
 
 
-# Scale up mastodon client when demand
-- hosts: temp-harvester
-  var_files:
-    - host_vars/config.yaml
-  gather_facts: true
-  roles:
-    - role: scale-up-mastodon-client
-
-
 # Web application setup
 - hosts: webapp
   var_files:
@@ -36,3 +27,13 @@
   gather_facts: true
   roles:
     - role: run-webapp
+
+
+
+# Scale up mastodon client when demand
+# - hosts: temp-harvester
+#   var_files:
+#     - host_vars/config.yaml
+#   gather_facts: true
+#   roles:
+#     - role: scale-up-mastodon-client

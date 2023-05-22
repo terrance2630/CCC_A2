@@ -1,3 +1,17 @@
+# Environment initializaiton on all instances
+- hosts: temp-harvester
+  vars_files: 
+    - host_vars/config.yaml
+  gather_facts: true
+
+  roles:
+    # - role: add-ssh
+    - role: install-dependency
+    - role: clone-repo
+    # - role: ...
+
+
+
 # Scale up mastodon client when demand
 - hosts: temp-harvester
   var_files:
