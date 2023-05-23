@@ -79,11 +79,6 @@ function Home() {
           />
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <ScatterPlot />
-        </Col>
-      </Row>
     </Container>
   );
 }

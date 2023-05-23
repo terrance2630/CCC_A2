@@ -12,11 +12,10 @@ import Wordcloud from '../components/wordcloud'
 import Mapbox from '../components/mapbox'
 
 import HorizontalBar from '../components/horizontalBar'
+import ScatterPlot from '../components/scatterPlot'
 
 import vehicleSentiment from '../jsons/vehicle_top_sentiment.json'
 import vehicleCount from '../jsons/vehicle_top_number.json'
-
-import scatter from './scatter.png'
 
 const wordcloudUrl = 'http://172.26.128.48:5984/wordcloud-vehicle/affb95dbd72b710c43d45382b803dd96'
 
@@ -82,7 +81,7 @@ function Home() {
       </Row>
       <Row>
         <Col>
-          <img src={scatter} />
+          <ScatterPlot />
         </Col>
       </Row>
     </Container>
