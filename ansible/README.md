@@ -1,5 +1,15 @@
 # Usage Guide for Ansible Automation
 
+
+### Prerequisites
+
+1. Log in to your MRC dashboard and download the `openrc.sh` file
+2. Reset and copy the password for your MRC account, this will be used for the `openrc.sh` script
+3. Put your `openrc.sh` file in the `/ansible/openrc/` directory
+4. Make sure the private key `group_20.pem` for logging into the instances is placed in the `/ansible/config/` directory
+5. Run the below command
+
+
 ### Auto Deployments with Ansible
 
 > Run the following command to deploy the webapp, database and Mastodon harvester:

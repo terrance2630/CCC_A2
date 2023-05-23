@@ -13,7 +13,6 @@
     install_recommends: no
     update_cache: yes
 
----
 # Below Codes are borrowed from ansible-demo, author: Yao Pan
 # https://github.com/alwynpan/uom-comp90024/blob/main/ansible-demo/all-in-one/roles/wp-docker/tasks/main.yaml
 

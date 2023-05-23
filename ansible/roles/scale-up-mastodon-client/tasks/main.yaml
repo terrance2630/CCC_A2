@@ -10,12 +10,12 @@
 
 - name: run Python application for social server
   become: true
-  shell: "nohup python3 harvester.py -s social > /dev/null 2>&1 &"
+  shell: "nohup python3 harvester.py -s social > social.log 2>&1 &"
   args:
     chdir: '{{ harvester_dir }}'
 
 - name: run Python application for au_social server
   become: true
-  shell: "nohup python3 harvester.py -s au_social > /dev/null 2>&1 &"
+  shell: "nohup python3 harvester.py -s au_social > au_social.log 2>&1 &"
   args:
     chdir: '{{ harvester_dir }}'

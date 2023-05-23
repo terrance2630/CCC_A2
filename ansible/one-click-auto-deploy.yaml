@@ -13,7 +13,7 @@
 
 # Mastodon Harvester Setup
 - hosts: mastodon-harvester
-  var_files:
+  vars_files:
     - host_vars/config.yaml
   gather_facts: true
   roles:
@@ -22,7 +22,7 @@
 
 # Web application setup
 - hosts: webapp
-  var_files:
+  vars_files:
     - host_vars/config.yaml
   gather_facts: true
   roles:
@@ -32,7 +32,7 @@
 
 # Scale up mastodon client when demand
 # - hosts: temp-harvester
-#   var_files:
+#   vars_files:
 #     - host_vars/config.yaml
 #   gather_facts: true
 #   roles:

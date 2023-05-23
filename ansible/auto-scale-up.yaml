@@ -14,7 +14,7 @@
 
 # Scale up mastodon client when demand
 - hosts: temp-harvester
-  var_files:
+  vars_files:
     - host_vars/config.yaml
   gather_facts: true
   roles:
