@@ -10,9 +10,9 @@ function Menu() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/scenario1">Scenario1</Nav.Link>
-            <Nav.Link href="/scenario2">Scenario2</Nav.Link>
-            <Nav.Link href="/scenario3">Scenario3</Nav.Link>
+            <Nav.Link href="/scenario1">Food</Nav.Link>
+            <Nav.Link href="/scenario2">Vehicle</Nav.Link>
+            <Nav.Link href="/scenario3">Sports</Nav.Link>
             <Nav.Link href="/mastodon">Mastodon</Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -15,12 +15,16 @@ function Home() {
 
   return (
     <div style={{ 
+      backgroundColor: 'white',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }}>
+    <div style={{ 
       backgroundImage: `url(${weightlift})`,
       backgroundPosition: 'center',
-      backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
-      width: '100vw',
-      height: '100vh'
+      // width: '100vw',
+      height: '80vh',
     }}>
     <Container>
       <Row>
@@ -38,6 +42,7 @@ function Home() {
         </Col>
       </Row>
     </Container>
+    </div>
     </div>
   );
 }

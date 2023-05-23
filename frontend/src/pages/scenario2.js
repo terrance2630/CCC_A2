@@ -45,21 +45,21 @@ function Home() {
       <Row>
         <Col>
           <Alert style={{margin: 20}}>
-            Average Sport Tweet Per Person
+            Average Vehicle Tweets Per Person
           </Alert>
         </Col>
         <Col>
           <Alert style={{margin: 20}}>
-            Percentage of Positive Sentiment Towards Sport
+            Average Vehicle Count Per Dwelling
           </Alert>
         </Col>
       </Row>
       <Row>
-        <Col>
-          <Mapbox propertyType={'sport_map1'} max={0.01} valueName={'Tweet Count'}/>
+      <Col>
+          <Mapbox propertyType={'vehicle_map1'} max={0.01} valueName={'Tweet Count Per Person'}/>
         </Col>
         <Col>
-          <Mapbox propertyType={'sport_map2'} max={0.6} valueName={'Percentage'}/>
+          <Mapbox propertyType={'vehicle_map2'} max={2.5} valueName={'Vehicle Count'}/>
         </Col>
       </Row>
       <Row>

@@ -15,6 +15,7 @@ import HorizontalBar from '../components/horizontalBar'
 
 import sportSentiment from '../jsons/sport_senti.json'
 import sportCount from '../jsons/sport_tweet_pp.json'
+import ScatterPlot from '../components/scatterPlot'
 
 const wordcloudUrl = 'http://172.26.128.48:5984/wordcloud-sport/affb95dbd72b710c43d45382b803d19a'
 
@@ -42,22 +43,22 @@ function Home() {
       </Row>
       <Row>
         <Col>
-          <Alert style={{margin: 20}}>
-            Average Vehicle Tweets Per Person
+          <Alert style={{ margin: 20 }}>
+            Average Sport Tweet Per Person
           </Alert>
         </Col>
         <Col>
-          <Alert style={{margin: 20}}>
-            Average Vehicle Count Per Dwelling
+          <Alert style={{ margin: 20 }}>
+            Percentage of Positive Sentiment Towards Sport
           </Alert>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Mapbox propertyType={'vehicle_map1'} max={0.01} valueName={'Tweet Count Per Person'}/>
+          <Mapbox propertyType={'sport_map1'} max={0.01} valueName={'Tweet Count'}/>
         </Col>
         <Col>
-          <Mapbox propertyType={'vehicle_map2'} max={2.5} valueName={'Vehicle Count'}/>
+          <Mapbox propertyType={'sport_map2'} max={0.6} valueName={'Percentage'}/>
         </Col>
       </Row>
       <Row>
@@ -76,6 +77,11 @@ function Home() {
             labelName='Average Tweet Count'
             json={sportCount}
           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <ScatterPlot />
         </Col>
       </Row>
     </Container>
