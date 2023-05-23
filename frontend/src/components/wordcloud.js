@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import ReactWordcloud from 'react-wordcloud'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 function Wordcloud(props) {
   const [post, setPost] = React.useState(null)
@@ -32,12 +33,14 @@ function Wordcloud(props) {
   }
 
   return (
-    <div>
-      <Button variant="primary" size="lg" onClick={updateCloudID}>
+    <Card border='dark' style={{margin: 20}}>
+      <div>
+      <Button variant="primary" size="lg" onClick={updateCloudID} style={{margin: 20}}>
         Current Topic: {cloudID + 1}
       </Button>
       <ReactWordcloud words={getWordData()} />
-    </div>
+      </div>
+    </Card>
   );
 }
 

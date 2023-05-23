@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 
 function Menu() {
   return (
@@ -15,11 +14,6 @@ function Menu() {
             <Nav.Link href="/scenario2">Scenario2</Nav.Link>
             <Nav.Link href="/scenario3">Scenario3</Nav.Link>
             <Nav.Link href="/mastodon">Mastodon</Nav.Link>
-            <NavDropdown title="Test" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/mapbox">Mapbox</NavDropdown.Item>
-              <NavDropdown.Item href="/">None</NavDropdown.Item>
-              <NavDropdown.Item href="/">None</NavDropdown.Item>
-            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>

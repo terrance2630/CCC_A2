@@ -1,4 +1,5 @@
 import ReactECharts from 'echarts-for-react'
+import Card from 'react-bootstrap/Card'
 
 function SentimentPieChart(props) {
 
@@ -40,8 +41,14 @@ function SentimentPieChart(props) {
     ],
   };
 
+  if (props.noCard) {
+    return <ReactECharts option={sentimentChartOption} />;
+  }
+
   return (
-    <ReactECharts option={sentimentChartOption} />
+    <Card border='dark' style={{margin: 20}}>
+      <ReactECharts option={sentimentChartOption} />
+    </Card>
   );
 }
 

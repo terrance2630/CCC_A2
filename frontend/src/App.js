@@ -9,11 +9,10 @@ import Scenario1 from './pages/scenario1'
 import Scenario2 from './pages/scenario2'
 import Scenario3 from './pages/scenario3'
 import Mastodon from './pages/mastodon'
-import Mapbox from './components/mapbox'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: '#F1ecec'}}>
       <Menu />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,7 +20,6 @@ function App() {
         <Route path="/scenario2" element={<Scenario2 />} />
         <Route path="/scenario3" element={<Scenario3 />} />
         <Route path="/mastodon" element={<Mastodon />} />
-        <Route path="/mapbox" element={<Mapbox />} />
       </Routes>
     </div>
   );

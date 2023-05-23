@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
+import Card from 'react-bootstrap/Card'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 
-import sa4 from './sa4-full.json'
+import sa4 from '../jsons/sa4-full.json'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYm93ZW5mYW4tdW5pbWVsYiIsImEiOiJjbGhic2s0NzUwdTd5M2VzMGdmbzI5c3l4In0.EYJYO7ZDEVXj7R-k-y2tSg';
 
@@ -116,9 +117,9 @@ function Mapbox(props) {
   });
 
   return (
-    <div>
+    <Card border='dark' style={{margin: 20, padding: 1}}>
       <div ref={mapContainer} className="map-container" />
-    </div>
+    </Card>
   );
 
 }

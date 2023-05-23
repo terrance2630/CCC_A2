@@ -1,5 +1,4 @@
 import React from 'react'
-import EChartsReact from 'echarts-for-react'
 
 import Alert from 'react-bootstrap/Alert'
 import Container from 'react-bootstrap/Container'
@@ -11,6 +10,11 @@ import SentimentPieChart from '../components/sentimentPieChart'
 import Wordcloud from '../components/wordcloud'
 
 import Mapbox from '../components/mapbox'
+
+import HorizontalBar from '../components/horizontalBar'
+
+import vehicleSentiment from '../jsons/vehicle_top_sentiment.json'
+import vehicleCount from '../jsons/vehicle_top_number.json'
 
 import scatter from './scatter.png'
 
@@ -35,24 +39,17 @@ function Home() {
       </Row>
       <Row>
         <Col>
-          <Alert>
-            Analysis Text Here
-          </Alert>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
           <Wordcloud url={wordcloudUrl}/>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Alert>
+          <Alert style={{margin: 20}}>
             Average Sport Tweet Per Person
           </Alert>
         </Col>
         <Col>
-          <Alert>
+          <Alert style={{margin: 20}}>
             Percentage of Positive Sentiment Towards Sport
           </Alert>
         </Col>
@@ -67,83 +64,20 @@ function Home() {
       </Row>
       <Row>
         <Col>
-          <EChartsReact option={{
-            title: {
-              text: 'Cities with Lowest Positive Attitudes towards Vehicles'
-            },
-            legend: {},
-            grid: {
-              left: '3%',
-              right: '4%',
-              bottom: '3%',
-              containLabel: true
-            },
-            xAxis: {
-              type: 'value'
-            },
-            yAxis: {
-              type: 'category',
-              data: ['115', '304', '116', '311', '205', '120', '201', '313', '901', '126']
-            },
-            series: [
-              {
-                name: 'Percentage of Positive Tweets',
-                type: 'bar',
-                stack: 'total',
-                label: {
-                  show: true
-                },
-                emphasis: {
-                  focus: 'series'
-                },
-                data: [0.2413793103448276, 0.25, 0.29411764705882354, 0.3181818181818182, 0.32299270072992703, 0.3235294117647059, 0.32381889763779526, 0.325, 0.3333333333333333, 0.3333333333333333]
-              },
-            ]
-          }} />
+          <HorizontalBar
+            title='Cities with Lowest Positive Attitudes towards Vehicles'
+            labelName='Percentage of Positive Tweets'
+            json={vehicleSentiment}
+          />
         </Col>
       </Row>
       <Row>
         <Col>
-          <EChartsReact option={{
-            title: {
-              text: 'Top 10 Cities with Highest Vechicle Count Per Dwelling'
-            },
-            tooltip: {
-              trigger: 'axis',
-              axisPointer: {
-                // Use axis to trigger tooltip
-                type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
-              }
-            },
-            legend: {},
-            grid: {
-              left: '3%',
-              right: '4%',
-              bottom: '3%',
-              containLabel: true
-            },
-            xAxis: {
-              type: 'value'
-            },
-            yAxis: {
-              type: 'category',
-              data: ['115', '603', '509', '314', '307', '405', '311', '211', '204', '501']
-            },
-            series: [
-              {
-                name: 'Average Vehicle Count',
-                type: 'bar',
-                stack: 'total',
-                label: {
-                  show: true
-                },
-                emphasis: {
-                  focus: 'series'
-                },
-                data: [2.05, 2.03, 1.99, 1.93, 1.91, 1.91, 1.90, 1.90, 1.89, 1.89]
-              },
-            ]
-          }} />
+          <HorizontalBar
+            title='Top 10 Cities with Highest Vechicle Count Per Dwelling'
+            labelName='Average Tweet Count'
+            json={vehicleCount}
+          />
         </Col>
       </Row>
       <Row>

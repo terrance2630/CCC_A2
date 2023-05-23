@@ -1,4 +1,5 @@
 import ReactECharts from 'echarts-for-react'
+import Card from 'react-bootstrap/Card'
 
 function TopicPieChart(props) {
 
@@ -39,8 +40,14 @@ function TopicPieChart(props) {
     ],
   };
 
+  if (props.noCard) {
+    return <ReactECharts option={topicChartOption} />;
+  }
+
   return (
-    <ReactECharts option={topicChartOption} />
+    <Card border='dark' style={{margin: 20}}>
+      <ReactECharts option={topicChartOption} />
+    </Card>
   );
 }
 

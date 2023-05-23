@@ -25,7 +25,7 @@ function Home() {
     <Container>
       <Row>
         <Col>
-          <TopicPieChart topicName={'English'} topicCount={2512076} totalCount={3226683}/>
+          <TopicPieChart topicName={'English'} topicCount={2512076} totalCount={3226683} noCard/>
         </Col>
         <Col>
           <SentimentPieChart
@@ -33,6 +33,7 @@ function Home() {
             positiveCount={1150394}
             neutralCount={1504318}
             negativeCount={571972}
+            noCard
           />
         </Col>
       </Row>

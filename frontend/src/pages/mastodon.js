@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import ReactECharts from 'echarts-for-react'
+import Card from 'react-bootstrap/Card'
 
 import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/Container'
@@ -185,7 +186,7 @@ function Mastodon() {
     },
     series: [
       {
-        name: 'Amount of tweets',
+        name: 'Number of toots',
         type: 'pie',
         radius: '55%',
         center: ['50%', '60%'],
@@ -213,14 +214,16 @@ function Mastodon() {
     <Container>
       <Row>
         <Col>
-          <ReactECharts
-            option={totalTweetChartOption}
-            style={{ height: 300 }}
-            onChartReady={onChartReady}
-            onEvents={{
-              legendselectchanged: onChartLegendselectchanged,
-            }}
-          />
+          <Card border='dark' style={{ margin: 20 }}>
+            <ReactECharts
+              option={totalTweetChartOption}
+              style={{ height: 300 }}
+              onChartReady={onChartReady}
+              onEvents={{
+                legendselectchanged: onChartLegendselectchanged,
+              }}
+            />
+          </Card>
         </Col>
       </Row>
       <Row>
@@ -230,34 +233,40 @@ function Mastodon() {
       </Row>
       <Row>
         <Col>
-          <ReactECharts
-            option={foodSentimentChartOption}
-            style={{ height: 300 }}
-            onChartReady={onChartReady}
-            onEvents={{
-              legendselectchanged: onChartLegendselectchanged,
-            }}
-          />
+          <Card border='dark' style={{ margin: 20 }}>
+            <ReactECharts
+              option={foodSentimentChartOption}
+              style={{ height: 300 }}
+              onChartReady={onChartReady}
+              onEvents={{
+                legendselectchanged: onChartLegendselectchanged,
+              }}
+            />
+          </Card>
         </Col>
         <Col>
-          <ReactECharts
-            option={sportSentimentChartOption}
-            style={{ height: 300 }}
-            onChartReady={onChartReady}
-            onEvents={{
-              legendselectchanged: onChartLegendselectchanged,
-            }}
-          />
+          <Card border='dark' style={{ margin: 20 }}>
+            <ReactECharts
+              option={sportSentimentChartOption}
+              style={{ height: 300 }}
+              onChartReady={onChartReady}
+              onEvents={{
+                legendselectchanged: onChartLegendselectchanged,
+              }}
+            />
+          </Card>
         </Col>
         <Col>
-          <ReactECharts
-            option={vehicleSentimentChartOption}
-            style={{ height: 300 }}
-            onChartReady={onChartReady}
-            onEvents={{
-              legendselectchanged: onChartLegendselectchanged,
-            }}
-          />
+          <Card border='dark' style={{ margin: 20 }}>
+            <ReactECharts
+              option={vehicleSentimentChartOption}
+              style={{ height: 300 }}
+              onChartReady={onChartReady}
+              onEvents={{
+                legendselectchanged: onChartLegendselectchanged,
+              }}
+            />
+          </Card>
         </Col>
       </Row>
       <Row>
