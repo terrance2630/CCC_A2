@@ -1,0 +1,17 @@
+FROM node:20.1.0-alpine3.16
+
+WORKDIR /app/backend
+
+# Copy the backend files to the container
+COPY ./backend /app/backend
+
+# Install dependencies
+RUN npm install
+
+RUN pnpm install
+
+# Expose port 8000
+EXPOSE 8000
+
+# Start the backend
+CMD ["npm", "start"]
