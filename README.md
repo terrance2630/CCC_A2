@@ -1,20 +1,5 @@
 # CCC_A2 Repository User Guide
 
-Group20
-Bowen Fan
-Melbourne 1035162
-Guanqin Wang
-Melbourne 1074138
-Junran Lin
-Melbourne 1068324
-Tianqi Wang
-Melbourne 1045939
-Yi (Eunice) Yao
-Melbourne 1288896
-
-
-
-
 
 
 ## Ansible Automation
