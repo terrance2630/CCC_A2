@@ -8,7 +8,7 @@ COPY ./backend /app/backend
 # Install dependencies
 RUN npm install
 
-RUN pnpm install
+# RUN pnpm install
 
 # Expose port 8000
 EXPOSE 8000
