@@ -46,7 +46,7 @@
     install_recommends: false
     update_cache: true
 
-- name: Add Docker’s official GPG key
+- name: Add Docker's official GPG key
   become: true
   ansible.builtin.shell: |
     rm -rf /etc/apt/keyrings/docker.gpg

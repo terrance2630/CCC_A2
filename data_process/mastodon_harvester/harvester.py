@@ -53,13 +53,14 @@ m = Mastodon(
 class Listener(StreamListener):
     # called when receiving new post or status update
     def on_update(self, status):
-        # do sth
-        json_str = json.dumps(status, indent=2, sort_keys=True, default=str)
-        doc_id, doc_rev = db.save(json.loads(json_str))
-        print(f'Document saved with ID: {doc_id} and revision: {doc_rev}')
+        try:
+            json_str = json.dumps(status, indent=2, sort_keys=True, default=str)
+            doc_id, doc_rev = db.save(json.loads(json_str))
+            print(f'Document saved with ID: {doc_id} and revision: {doc_rev}')
+        except Exception as e:
+            print("filed to save document")
 
         document = db.get(doc_id)
-
         analysis.analyse(document)
 
         
