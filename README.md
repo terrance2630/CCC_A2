@@ -1,5 +1,17 @@
 # CCC_A2 Repository User Guide
 
+## Team Member
+
+| Name | Student ID | GitHub Profile |
+| ---- | ---- | -------------- |
+| Bowen Fan | 1035162 | [@Bowen](https://github.com/bowenfan-unimelb) |
+| Guanqin Wang | 1074138 | [@Harry](https://github.com/Harry-Guanqin-Wang) |
+| Junran Lin | 1068324 | [@Anson](https://github.com/junranLin) |
+| Tianqi Wang | 1045939 | [@Terrance](https://github.com/terrance2630) |
+| Yi (Eunice) Yao | 1288896 | [@Eunice](https://github.com/Eunice55) |
+> :blush: P.S. We are all base in Melbourne :city_sunrise::city_sunrise:
+
+
 ## Ansible Automation
 
 > :exclamation: Make sure the prerequisites are met before running the following steps.
