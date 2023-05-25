@@ -1,10 +1,12 @@
 ---
 - name: Delete remote working directory if exists
+  become: true
   file:
     state: absent
     path: '{{ remote_working_directory }}'
 
 - name: Creates remote working directory
+  become: true
   file:
     path: '{{ remote_working_directory }}'
     state: directory
