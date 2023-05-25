@@ -30,3 +30,5 @@ chmod +x auto-scale-up.sh
 ```
 See the below image for a usage example:
 ![](../resource/auto-scale-use.png)
+
+*To auto scale down the Mastodon client, simply replace the command with file name `auto-scale-down.sh`*

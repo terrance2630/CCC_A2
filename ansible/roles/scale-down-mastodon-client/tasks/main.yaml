@@ -1,0 +1,12 @@
+--- 
+
+- name: stop harvesting process
+  become: true
+  shell: "pkill -f 'python3 harvester.py -s'"
+
+
+- name: clean up file system 
+  become: true
+  file:
+    state: absent
+    path: '{{ remote_working_directory }}'

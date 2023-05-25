@@ -1,0 +1,7 @@
+# Scale down Mastodon client when not needed
+- hosts: temp-harvester
+  vars_files:
+    - host_vars/config.yaml
+  gather_facts: true
+  roles:
+    - role: scale-down-mastodon-client
