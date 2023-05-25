@@ -12,8 +12,11 @@ data_process/data/SA4/*.shx
 data_process/data/SA4/*.xml
 data_process/mastodon_harvester/userpass.json
 
+twitter_data_token_by_topic/*.json
+
 # Ignore any .log files in the root directory
 *.log
+<<<<<<< HEAD
 logs
 npm-debug.log*
 yarn-debug.log*
@@ -157,3 +160,8 @@ dist
 
 # exclude private keys
 **/*.pem
+=======
+*.DS_Store
+
+scenarios_data/data/*.json
+>>>>>>> 6ec719f169b18fc0ebc31afab5006943e8727423
